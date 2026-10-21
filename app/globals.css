@@ -203,6 +203,39 @@ svg { flex-shrink: 0; }
 .restaurant-card__status { min-height: 24px; font-size: .92rem; }
 .restaurant-card__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: auto; padding-top: 12px; }
 
+/* Marquee ribbon */
+.marquee { overflow: hidden; margin-block: 28px; padding: 14px 0; background: var(--text); color: var(--black); transform: rotate(-1.5deg); box-shadow: 0 14px 40px #00000080; }
+.marquee__track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+.marquee span { display: inline-flex; align-items: center; gap: 28px; padding-right: 28px; font-family: var(--font-rye), serif; font-size: clamp(1.1rem, 2.4vw, 1.6rem); white-space: nowrap; }
+.marquee span::after { content: "✦"; color: var(--red); font-family: var(--font-dm-sans), sans-serif; font-size: .8em; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Why us */
+.why { position: relative; overflow: hidden; background: radial-gradient(800px 500px at 15% 40%, #e31e2426, transparent 70%), var(--surface); border-block: 1px solid var(--line); }
+.why__inner { display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; gap: clamp(40px, 7vw, 96px); }
+.why__media { position: relative; display: grid; grid-template-columns: 1fr 1fr; padding-bottom: 48px; }
+.why__media img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border: 6px solid var(--text); border-radius: 22px; box-shadow: 0 30px 60px #000000b3; transition: transform .5s; }
+.why__story { grid-column: 1 / span 2; grid-row: 1; width: 72% !important; transform: rotate(-4deg); }
+.why__shot { grid-column: 2; grid-row: 1; align-self: end; justify-self: end; width: 82% !important; margin-bottom: -48px; transform: rotate(5deg); }
+.why__media:hover .why__story { transform: rotate(-6deg) translateY(-6px); }
+.why__media:hover .why__shot { transform: rotate(7deg) translateY(-6px); }
+.why__sticker { position: absolute; top: -18px; right: 6%; z-index: 1; display: grid; place-items: center; width: 108px; height: 108px; border-radius: 50%; background: var(--red); color: #fff; font-family: var(--font-rye), serif; font-size: 1.05rem; line-height: 1.1; text-align: center; transform: rotate(12deg); box-shadow: 0 12px 30px var(--red-glow); }
+.why h2 span, .crave h2 span { display: block; color: var(--red); }
+.why__list { display: grid; gap: 26px; margin: 36px 0 0; padding: 0; list-style: none; counter-reset: why; }
+.why__list li { position: relative; padding-left: 62px; counter-increment: why; }
+.why__list li::before { content: counter(why, decimal-leading-zero); position: absolute; left: 0; top: -4px; color: var(--red); font-family: var(--font-rye), serif; font-size: 1.9rem; line-height: 1; }
+.why__list strong { font-size: 1.12rem; }
+.why__list p { margin-top: 4px; color: var(--muted); }
+
+/* Crave band */
+.crave { border-top: 1px solid var(--line); background: linear-gradient(120deg, #e31e241f, transparent 55%); }
+.crave__inner { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: clamp(32px, 6vw, 80px); }
+.crave__media { position: relative; max-width: 400px; justify-self: center; }
+.crave__media::before { content: ""; position: absolute; inset: 0; border-radius: 22px; background: var(--red); transform: rotate(5deg); }
+.crave__media img { position: relative; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 22px; transform: rotate(-2deg); box-shadow: 0 30px 60px #000000b3; }
+.crave__lead { max-width: 480px; margin-top: 16px; color: #d6cfc6; font-size: 1.1rem; }
+.crave__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); background: #070707; }
 .site-footer__inner { display: grid; grid-template-columns: 1.2fr 2fr; gap: 48px; padding-block: 64px 40px; }
@@ -230,6 +263,8 @@ svg { flex-shrink: 0; }
   .signatures__grid .signature:last-child { grid-column: 1 / -1; }
   .concept, .infos__grid { grid-template-columns: 1fr; }
   .concept__media::before { inset: 16px -12px -12px 16px; }
+  .why__inner, .crave__inner { grid-template-columns: 1fr; }
+  .why__media { max-width: 520px; width: 100%; justify-self: center; }
 }
 
 @media (max-width: 760px) {
@@ -257,6 +292,11 @@ svg { flex-shrink: 0; }
   .action-bar { position: fixed; inset: auto 0 0; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); padding-bottom: env(safe-area-inset-bottom); border-top: 1px solid var(--line); background: #0b0b0bf2; backdrop-filter: blur(10px); }
   .action-bar a { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; font-size: .78rem; font-weight: 700; }
   .action-bar a:first-child { background: var(--red); }
+  .why__media { max-width: 340px; }
+  .why__sticker { width: 84px; height: 84px; font-size: .85rem; }
+  .why__list li { padding-left: 50px; }
+  .crave__media { max-width: 260px; }
+  .crave__actions .button { flex: 1 1 auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {

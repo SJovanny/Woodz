@@ -1,11 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowIcon, PinIcon } from "./components/Icons"
-import Qualities from "./components/Qualities"
+import CraveBand from "./components/CraveBand"
+import Marquee from "./components/Marquee"
 import RestaurantCard from "./components/RestaurantCard"
 import Signatures from "./components/Signatures"
 import SiteFooter from "./components/SiteFooter"
 import SiteHeader from "./components/SiteHeader"
+import WhyUs from "./components/WhyUs"
 import { RESTAURANTS } from "./lib/restaurants"
 import { BRAND, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site"
 import plateau from "../public/images/plateau-woodz.jpg"
@@ -61,6 +63,8 @@ export default function Home() {
           </div>
         </section>
 
+        <Marquee />
+
         <section className="section-shell restaurants" id="restaurants" aria-labelledby="restaurants-title">
           <div className="section-head">
             <p className="kicker">Sur place ou à emporter</p>
@@ -74,7 +78,7 @@ export default function Home() {
           </div>
         </section>
 
-        <Qualities />
+        <WhyUs />
         <Signatures />
 
         <section className="concept-band" id="concept" aria-labelledby="concept-title">
@@ -97,6 +101,21 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <CraveBand
+          title={
+            <>
+              On vous attend, <span>la broche tourne.</span>
+            </>
+          }
+          lead="Sur place ou à emporter, appelez votre WoodZ et votre commande est prête à votre arrivée."
+        >
+          {RESTAURANTS.map((restaurant, index) => (
+            <Link key={restaurant.slug} className={`button ${index === 0 ? "button--red" : "button--outline"}`} href={`/${restaurant.slug}`}>
+              <PinIcon /> {restaurant.shortName}
+            </Link>
+          ))}
+        </CraveBand>
       </main>
 
       <SiteFooter />

@@ -3,7 +3,9 @@ import Image from "next/image"
 import { type Restaurant, RESTAURANTS, fullAddress, getRestaurant, mapsUrl, phoneHref } from "../lib/restaurants"
 import { BRAND, SITE_URL } from "../lib/site"
 import HoursTable from "./HoursTable"
+import CraveBand from "./CraveBand"
 import { ArrowIcon, ClockIcon, MenuIcon, PhoneIcon, PinIcon } from "./Icons"
+import Marquee from "./Marquee"
 import MenuBoard from "./MenuBoard"
 import OpenStatus from "./OpenStatus"
 import Qualities from "./Qualities"
@@ -109,6 +111,7 @@ export default function RestaurantPage({ slug }: { slug: string }) {
 
         <Qualities />
         <MenuBoard />
+        <Marquee />
 
         <section className="infos" id="infos" aria-labelledby="infos-title">
           <div className="section-shell infos__grid">
@@ -150,6 +153,22 @@ export default function RestaurantPage({ slug }: { slug: string }) {
             </div>
           </div>
         </section>
+
+        <CraveBand
+          title={
+            <>
+              Un petit creux&nbsp;? <span>On s’occupe de tout.</span>
+            </>
+          }
+          lead={`Appelez le ${restaurant.phoneDisplay} : votre commande est prête à votre arrivée.`}
+        >
+          <a className="button button--red" href={tel}>
+            <PhoneIcon /> Appeler
+          </a>
+          <a className="button button--outline" href={maps} target="_blank" rel="noopener noreferrer">
+            <PinIcon /> Itinéraire
+          </a>
+        </CraveBand>
 
         <section className="section-shell others" aria-labelledby="others-title">
           <div className="section-head">
