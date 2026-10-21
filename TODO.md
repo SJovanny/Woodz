@@ -16,11 +16,9 @@
 ## Reste à faire
 
 ### Vérifications visuelles
-- [ ] Repasser sur la page en mobile (390 px) et desktop : dernière capture faite avant les corrections ci-dessous.
-  - Ratio des photos signatures passé en 3/2 (le logo WoodZ incrusté était coupé à droite).
-  - Couleur du statut « Ouvert » dans le bloc Infos (était écrasée par `.contact-list span`).
-- [ ] Le recadrage du hero coupe « KEBAB HOUSE » incrusté en haut à droite de la photo : ajuster `object-position` de `.hero__image` ou choisir une autre photo.
-- [ ] La pastille « 2 au choix » des suppléments passe à la ligne : à resserrer.
+- [x] Mobile (390 px) et desktop (1440 px) vérifiés : aucun débordement horizontal, aucune erreur console.
+- [x] Photos signatures en 3/2, statut « Ouvert » coloré dans le bloc Infos, pastille « 2 au choix » sur la ligne du nom.
+- [x] Hero : photo recadrée (`70% 30%` desktop, `38%` mobile) et voile plus sombre sur mobile pour que le titre reste lisible.
 
 ### Contenu à valider avec le client
 - [ ] Les « Menus » (Le Wood’Z 15,50 €, etc.) sont présentés comme « sandwich, frites et boisson » d’après les photos du panneau : faire confirmer.
@@ -36,10 +34,10 @@
 ### Technique / mise en ligne
 - [ ] Choisir le domaine puis définir `NEXT_PUBLIC_SITE_URL` sur Vercel (utilisé par `metadataBase` et le JSON-LD ; défaut `http://localhost:3000`).
 - [ ] Déployer sur Vercel (`vercel.json` déjà présent).
-- [ ] Ajouter `app/robots.ts` et `app/sitemap.ts` (comme sur FreshTea-m).
-- [ ] Ajouter les en-têtes de sécurité dans `next.config.ts` (voir FreshTea-m).
+- [x] `app/robots.ts` et `app/sitemap.ts`.
+- [x] En-têtes de sécurité dans `next.config.ts` (repris de FreshTea-m).
 - [ ] Pages légales : mentions légales et politique de confidentialité (infos de la société à demander).
-- [ ] Icônes : `app/icon.jpg` vient du favicon 192 px du site ; prévoir un `apple-icon` et une meilleure résolution.
+- [x] Icônes : `app/icon.png` (512 px) et `app/apple-icon.png` (180 px), le « Z » rouge du logo sur fond noir.
 - [ ] Optionnel : passer sur une structure `/restaurants/[slug]` comme le site mère si d’autres WoodZ suivent.
 
 ## Lancer en local

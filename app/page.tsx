@@ -178,11 +178,12 @@ export default function Home() {
                           <span className="menu-list__name">
                             {name}
                             {veggie && <span className="pill pill--veggie">Veggie</span>}
+                            {note && !description && <span className="pill">{note}</span>}
                           </span>
                           <span className="menu-list__dots" aria-hidden="true" />
                           <span className="menu-list__price">{formatPrice(price)}</span>
                         </div>
-                        {(description || note) && (
+                        {description && (
                           <p className="menu-list__desc">
                             {description}
                             {note && <span className="pill">{note}</span>}
