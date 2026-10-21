@@ -24,3 +24,17 @@ export const formatTime = (minutes: number) => {
 
 export const formatSlots = (slots: readonly Slot[]) =>
   slots.length ? slots.map(([open, close]) => `${formatTime(open)} – ${formatTime(close)}`).join(" · ") : "Fermé"
+
+// Legal identity shown on /mentions-legales, from https://woodz-kebab-house.fr/mentions-legales/.
+// The "[À COMPLÉTER" fields are not published there and must be filled in before going live.
+export const LEGAL = {
+  company: "WOODZ",
+  legalForm: "[À COMPLÉTER : forme juridique]",
+  siret: "894 856 707 00019",
+  vat: "FR73 894856707",
+  address: "13 Bois l’Abbesse, 68660 Liepvre",
+  email: "contact@woodz-kebab-house.fr",
+  publisher: "[À COMPLÉTER : nom du directeur de la publication]",
+  designer: "[À COMPLÉTER : votre nom ou raison sociale]",
+  host: "Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis, vercel.com",
+}
