@@ -24,7 +24,8 @@ const jsonLd = {
 
 export default function Home() {
   return (
-    <>
+    // One root element: on navigation Next scrolls to the page's first visible top-level node, and sibling roots made it land on the footer.
+    <div className="page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <a className="skip-link" href="#contenu">Aller au contenu</a>
       <SiteHeader
@@ -99,6 +100,6 @@ export default function Home() {
       </main>
 
       <SiteFooter />
-    </>
+    </div>
   )
 }

@@ -33,7 +33,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="fr" className={`${dmSans.variable} ${rye.variable}`}>
+    // data-scroll-behavior: Next 16 then makes route changes jump instantly to the top while in-page anchors keep smooth scrolling.
+    <html lang="fr" className={`${dmSans.variable} ${rye.variable}`} data-scroll-behavior="smooth">
       <body>{children}</body>
     </html>
   )

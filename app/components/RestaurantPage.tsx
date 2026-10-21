@@ -8,6 +8,7 @@ import MenuBoard from "./MenuBoard"
 import OpenStatus from "./OpenStatus"
 import Qualities from "./Qualities"
 import RestaurantCard from "./RestaurantCard"
+import RestaurantSwitcher from "./RestaurantSwitcher"
 import SiteFooter from "./SiteFooter"
 import SiteHeader from "./SiteHeader"
 
@@ -58,7 +59,8 @@ export default function RestaurantPage({ slug }: { slug: string }) {
   const maps = mapsUrl(restaurant)
 
   return (
-    <>
+    // One root element: on navigation Next scrolls to the page's first visible top-level node, and sibling roots made it land on the footer.
+    <div className="page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantJsonLd(restaurant)).replace(/</g, "\\u003c") }} />
       <a className="skip-link" href="#contenu">Aller au contenu</a>
       <SiteHeader
@@ -75,6 +77,7 @@ export default function RestaurantPage({ slug }: { slug: string }) {
           <Image className="hero__image" src={restaurant.heroImage} alt="" fill preload sizes="100vw" placeholder="blur" />
           <div className="hero__shade" />
           <div className="hero__content">
+            <RestaurantSwitcher current={restaurant.slug} />
             <p className="eyebrow">
               <PinIcon /> {fullAddress(restaurant)}
             </p>
@@ -174,6 +177,6 @@ export default function RestaurantPage({ slug }: { slug: string }) {
           <MenuIcon /> La carte
         </a>
       </nav>
-    </>
+    </div>
   )
 }
