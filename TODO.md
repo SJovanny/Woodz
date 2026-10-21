@@ -3,32 +3,31 @@
 ## Fait
 
 - Projet Next.js 16.4.2 (App Router, `app/` à la racine, CSS natif, sans Tailwind), même stack que FreshTea-m.
-- Page vitrine unique `app/page.tsx` : hero, bandeau qualité, signatures (Le Wood’Z, Döner Simple, Alaturka), carte complète, concept, infos & horaires, autres restaurants WoodZ, footer, barre d’actions mobile (Appeler / Itinéraire / Carte).
-- Thème noir + rouge (`#e31e24`), polices Rye (titres, rappel du logo western) + DM Sans.
+- Structure calquée sur le site mère woodz-kebab-house.fr :
+  - `/` : page de la marque avec les 3 adresses (cartes restaurant avec statut ouvert/fermé en direct), signatures, concept.
+  - `/illkirch`, `/selestat`, `/colmar-houssen` : une page par restaurant (hero, carte complète, infos & horaires, autres restaurants), rendue par `app/components/RestaurantPage.tsx`.
 - Données :
-  - `app/lib/menu.ts` : carte et prix transcrits depuis le panneau « menu-woodz-2025 » du site officiel.
-  - `app/lib/site.ts` : adresse, téléphone, horaires, liens, autres restaurants.
-- Statut « Ouvert / Fermé » en direct (heure de Paris) et jour courant surligné dans les horaires (`app/components/OpenStatus.tsx`, `HoursTable.tsx`, `useParisNow.ts`).
-- SEO : metadata, Open Graph, JSON-LD `Restaurant` avec horaires.
-- Visuels récupérés depuis woodz-kebab-house.fr dans `public/images/` (logo, 3 photos sandwichs, photo du chalet Illkirch, plateau, carte originale, badges halal / qualité).
-- `npm run lint` et `npm run build` passent.
+  - `app/lib/restaurants.ts` : adresse, téléphone, horaires, photos et SEO de chaque restaurant. Ajouter un restaurant = ajouter une entrée + un dossier `app/<slug>/page.tsx`.
+  - `app/lib/menu.ts` : carte et prix 2025 (identiques dans les 3 restaurants).
+- Images détourées de chaque plat (menus, assiettes, box, menus enfant) à côté du nom dans la carte : `public/images/carte/`, découpées du panneau `carte-woodz-2025.png` (fond noir retiré, pastilles de prix effacées puis reconstruites).
+- Itinéraires construits depuis l’adresse de chaque restaurant : les pages officielles pointent toutes vers la même fiche Google Maps (celle de Sélestat).
+- Thème noir + rouge (`#e31e24`), polices Rye (titres) + DM Sans.
+- SEO : metadata par page, Open Graph, JSON-LD `Organization` (home) et `Restaurant` (chaque restaurant, avec horaires), robots.txt, sitemap.xml.
+- En-têtes de sécurité, favicon et icône Apple (le « Z » rouge du logo).
+- `npm run lint` et `npm run build` passent ; toutes les pages vérifiées en 390 px et 1440 px.
 
 ## Reste à faire
 
-### Vérifications visuelles
-- [x] Mobile (390 px) et desktop (1440 px) vérifiés : aucun débordement horizontal, aucune erreur console.
-- [x] Photos signatures en 3/2, statut « Ouvert » coloré dans le bloc Infos, pastille « 2 au choix » sur la ligne du nom.
-- [x] Hero : photo recadrée (`70% 30%` desktop, `38%` mobile) et voile plus sombre sur mobile pour que le titre reste lisible.
-
 ### Contenu à valider avec le client
 - [ ] Les « Menus » (Le Wood’Z 15,50 €, etc.) sont présentés comme « sandwich, frites et boisson » d’après les photos du panneau : faire confirmer.
-- [ ] Horaires du dimanche (17h – 21h d’après la liste du site, mais le texte du site n’en parle pas).
+- [ ] Horaires du dimanche : Illkirch et Houssen 17h – 21h, Sélestat fermé (d’après les listes du site ; les textes n’en parlent pas).
 - [ ] Mention « Viande halal » : reprise du badge de la carte, à confirmer.
-- [ ] Pas d’avis clients : le widget Google du site officiel affiche ceux de Sélestat, pas d’Illkirch. Récupérer les vrais avis Illkirch (ou lien « Laisser un avis » avec le place ID Illkirch).
-- [ ] Photos supplémentaires propres à Illkirch (intérieur, équipe, plats) si le client en a.
+- [ ] Pas d’avis clients : le widget Google du site officiel affiche ceux de Sélestat sur les 3 pages. Récupérer les fiches Google de chaque restaurant (avis + lien « Laisser un avis »).
+- [ ] Photos supplémentaires de chaque restaurant (intérieur, équipe, plats). Les photos actuelles sont petites (680 px pour Illkirch et Houssen).
+- [ ] Images des sandwichs seuls (la carte n’a que les visuels « menu » avec canette et frites, donc la rubrique Sandwichs n’a pas d’images).
 
 ### Médias
-- [ ] Les 4 vidéos du site officiel (`frites-croustillantes.mp4`, `pain-artisanal.mp4`, `salade.mp4`, `viande-boeuf-artisanale.mp4`) sont des aperçus iStock filigranés : NE PAS les utiliser. Demander au client des vidéos à lui (ou acheter les licences) pour une vidéo de hero.
+- [ ] Les 4 vidéos du site officiel (`frites-croustillantes.mp4`, `pain-artisanal.mp4`, `salade.mp4`, `viande-boeuf-artisanale.mp4`) sont des aperçus iStock filigranés : NE PAS les utiliser. Les autres vidéos de la médiathèque (`woodz-kebab-house-1.mp4`, `woodz-doner-kebab-house-background.mp4`) ressemblent à des banques d’images (wrap, sachet d’une autre marque) : à vérifier avant usage. Demander au client des vidéos à lui (ou acheter les licences) pour une vidéo de hero.
 - [ ] Convertir les JPG en WebP/AVIF si besoin (next/image optimise déjà à la volée).
 
 ### Technique / mise en ligne
@@ -38,7 +37,6 @@
 - [x] En-têtes de sécurité dans `next.config.ts` (repris de FreshTea-m).
 - [ ] Pages légales : mentions légales et politique de confidentialité (infos de la société à demander).
 - [x] Icônes : `app/icon.png` (512 px) et `app/apple-icon.png` (180 px), le « Z » rouge du logo sur fond noir.
-- [ ] Optionnel : passer sur une structure `/restaurants/[slug]` comme le site mère si d’autres WoodZ suivent.
 
 ## Lancer en local
 
