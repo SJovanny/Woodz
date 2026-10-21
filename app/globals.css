@@ -131,7 +131,7 @@ svg { flex-shrink: 0; }
 .menu-chips::-webkit-scrollbar { display: none; }
 .menu-chips a { flex-shrink: 0; padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); font-size: .9rem; font-weight: 700; transition: border-color .2s, background .2s; }
 .menu-chips a:hover { border-color: var(--red); background: #e31e241a; }
-.menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; }
+.menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: stretch; }
 .menu-card { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); scroll-margin-top: 150px; }
 .menu-card--menus { grid-column: 1 / -1; border-color: #e31e2466; background: linear-gradient(135deg, #e31e2414, transparent 60%), var(--card); }
 .menu-card--menus .menu-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 48px; }
