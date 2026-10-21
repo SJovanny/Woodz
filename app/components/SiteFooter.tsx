@@ -32,7 +32,7 @@ export default function SiteFooter() {
         </ul>
       </div>
       <p className="site-footer__copy">
-        © WoodZ Kebab House · <Link href="/mentions-legales">Mentions légales</Link> · <Link href="/confidentialite">Confidentialité</Link>
+        © WoodZ Kebab House · <Link href="/contact">Contact</Link> · <Link href="/mentions-legales">Mentions légales</Link> · <Link href="/confidentialite">Confidentialité</Link>
       </p>
     </footer>
   )

@@ -312,3 +312,26 @@ svg { flex-shrink: 0; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Contact page */
+.contact { padding-top: 140px; }
+.contact__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.contact-card { display: flex; flex-direction: column; gap: 14px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.contact-card h2 { font-family: var(--font-rye), serif; font-size: 1.4rem; font-weight: 400; line-height: 1.25; }
+.contact-card__address { display: flex; gap: 8px; color: #d6cfc6; line-height: 1.5; }
+.contact-card__address svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; color: var(--red); }
+.contact-card .restaurant-card__actions { padding-top: 6px; }
+.contact__more { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 40px; color: #d6cfc6; }
+.contact__more a:not([aria-label]) { color: var(--red); text-decoration: underline; }
+@media (min-width: 1001px) { .contact-card h2 { min-height: 2.5em; } }
+@media (max-width: 1000px) { .contact__grid { grid-template-columns: 1fr; } }
+.contact-form { display: grid; gap: 16px; max-width: 720px; margin-top: 56px; padding: 32px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.contact-form h2 { font-family: var(--font-rye), serif; font-size: 1.5rem; font-weight: 400; }
+.contact-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.contact-form label { display: grid; gap: 6px; font-size: .9rem; font-weight: 700; }
+.contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 13px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--black); color: var(--text); font: inherit; font-weight: 500; }
+.contact-form textarea { resize: vertical; }
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline: 2px solid var(--red); outline-offset: 1px; }
+.contact-form .button { justify-self: start; }
+.contact-form__note { color: var(--muted); font-size: .82rem; line-height: 1.5; }
+@media (max-width: 760px) { .contact-form { padding: 22px 18px; } .contact-form__row { grid-template-columns: 1fr; } }

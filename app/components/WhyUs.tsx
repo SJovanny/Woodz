@@ -12,7 +12,7 @@ const REASONS = [
 // The story photo asks the question in its own lettering; the section answers it.
 export default function WhyUs() {
   return (
-    <section className="why" aria-labelledby="why-title">
+    <section className="why" id="pourquoi-nous" aria-labelledby="why-title">
       <div className="section-shell why__inner">
         <div className="why__media">
           <Image className="why__story" src={pourquoiNous} alt="Pourquoi venir chez nous ? Viande d’entrecôte servie à la pince dans une barquette avec frites et crudités" sizes="(max-width: 760px) 70vw, 26vw" placeholder="blur" />

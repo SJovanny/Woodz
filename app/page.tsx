@@ -33,8 +33,10 @@ export default function Home() {
       <SiteHeader
         links={[
           { href: "#restaurants", label: "Nos restaurants" },
+          { href: "#pourquoi-nous", label: "Pourquoi nous" },
           { href: "#signatures", label: "Nos signatures" },
           { href: "#concept", label: "Le concept" },
+          { href: "/contact", label: "Contact" },
         ]}
       />
 
